@@ -41,7 +41,7 @@ class SubstitutionScoring(Scoring):
         self.mismatchScore = mismatchScore
 
     def __call__(self, firstElement, secondElement):
-        temp = self.matchScore.loc[firstElement, secondElement]
+        temp = self.matchScore.iloc[firstElement, secondElement]
         if temp >= self.mismatchScore:
             return temp
         else:
