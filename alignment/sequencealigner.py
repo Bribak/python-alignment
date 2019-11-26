@@ -33,6 +33,19 @@ class SimpleScoring(Scoring):
             return self.matchScore
         else:
             return self.mismatchScore
+        
+class SubstitutionScoring(Scoring):
+    
+    def __init__(self, subMatrix, mismatchScore):
+        self.matchScore = subMatrix
+        self.mismatchScore = mismatchScore
+
+    def __call__(self, firstElement, secondElement):
+        temp = self.matchScore.loc[firstElement, secondElement]
+        if temp >= self.mismatchScore:
+            return temp
+        else:
+            return self.mismatchScore
 
 
 # Alignment -------------------------------------------------------------------
