@@ -46,11 +46,11 @@ class SubstitutionScoring(Scoring):
         elif secondElement == 0:
             return self.mismatchScore
         else:
-            temp = self.matchScore.iloc[firstElement-1, secondElement-1]
-            if temp >= self.mismatchScore:
-                return temp
-            else:
-                return self.mismatchScore
+            try:
+              temp = self.matchScore.iloc[firstElement-1, secondElement-1]
+            except:
+              temp = self.mismatchScore
+            return temp
 
 
 # Alignment -------------------------------------------------------------------
